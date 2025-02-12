@@ -7,6 +7,7 @@ from modules.task1 import Task1
 from modules.task2 import Task2
 from modules.task3 import Task3
 from modules.task4 import Task4
+from modules.task5 import Task5
 # from scipy.optimize import curve_fit
 # from scipy.integrate import romberg
 # from scipy.misc import derivative
@@ -28,7 +29,7 @@ class NumericalMethodsApp(ctk.CTk):
             "Task 2": Task2,
             "Task 3": Task3,
             "Task 4": Task4,
-            # "Task 5": Task5,
+            "Task 5": Task5,
             # "Task 6": Task6,
             # "Task 7": Task7,
             # "Task 8": Task8,
