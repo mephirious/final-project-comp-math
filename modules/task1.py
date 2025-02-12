@@ -3,6 +3,7 @@ import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
+from scipy.optimize import root_scalar
 from modules.utils import calculate_errors
 
 class Task1(ctk.CTkFrame):
@@ -122,17 +123,15 @@ class Task1(ctk.CTkFrame):
         b = float(self.b_entry.get())
         c = float(self.c_entry.get())
         d = float(self.d_entry.get())
+        x_min = float(self.xmin_entry.get())
+        x_max = float(self.xmax_entry.get())
 
         def f(x): return a * x**3 + b * x**2 + c * x + d
         def df(x): return 3 * a * x**2 + 2 * b * x + c
 
-        x0 = self.approx_root
-        for _ in range(100):
-            x0 -= f(x0) / df(x0)
-            if abs(f(x0)) < 1e-6:
-                break
-
-        self.true_root = x0
+        result = root_scalar(f, bracket=[x_min, x_max], method='brentq')
+        self.true_root = result.root
+        
         absolute_error, relative_error = calculate_errors(self.true_root, self.approx_root)
 
         self.result_label.configure(
