@@ -75,9 +75,11 @@ class Task4(ctk.CTkFrame):
 
             B_inv = iterative_inverse(A, B, tol, max_iter)
 
-            self.result_label.configure(
-                text=f"Inverse of A:\n{B_inv}"
-            )
+            result_text = "Inverse of A:\n"
+            for row in B_inv:
+                result_text += " ".join(f"{val:.6f}" for val in row) + "\n"
+
+            self.result_label.configure(text=result_text)
         except ValueError:
             self.result_label.configure(text="Invalid input. Please enter numeric values.")
         except np.linalg.LinAlgError:
