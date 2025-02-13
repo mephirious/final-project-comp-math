@@ -68,7 +68,7 @@ class Task7(ctk.CTkFrame):
             result_text = "Romberg Table:\n"
             for row in R:
                 result_text += " ".join(f"{val:.6f}" for val in row) + "\n"
-            result_text += f"\nApproximate value of the integral: {R[-1, -1]:.6f}"
+            result_text += f"\nApproximate value of the integral: {R[-1, -1]:.6f}\n\nThe Romberg table demonstrates that the method converges to the exact value as the step size h decreases."
 
             self.result_label.configure(text=result_text)
         except ValueError:

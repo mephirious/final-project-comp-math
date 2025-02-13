@@ -1,8 +1,4 @@
 import customtkinter as ctk
-import numpy as np
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from matplotlib.figure import Figure
-import matplotlib.pyplot as plt
 from modules.task1 import Task1
 from modules.task2 import Task2
 from modules.task3 import Task3
@@ -10,9 +6,7 @@ from modules.task4 import Task4
 from modules.task5 import Task5
 from modules.task6 import Task6
 from modules.task7 import Task7
-# from scipy.optimize import curve_fit
-# from scipy.integrate import romberg
-# from scipy.misc import derivative
+from modules.task8 import Task8
 
 ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
@@ -20,8 +14,8 @@ ctk.set_default_color_theme("blue")
 class NumericalMethodsApp(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Advanced Numerical Methods")
-        self.geometry(f"{1000}x{450}") 
+        self.title("Final project CompMath (UNIS team)")
+        self.geometry(f"{1000}x{500}") 
         
         self.notebook = ctk.CTkTabview(self)
         self.notebook.pack(fill="both", expand=True)
@@ -34,7 +28,7 @@ class NumericalMethodsApp(ctk.CTk):
             "Task 5": Task5,
             "Task 6": Task6,
             "Task 7": Task7,
-            # "Task 8": Task8,
+            "Task 8": Task8,
         }
         
         for title, cls in self.tabs.items():

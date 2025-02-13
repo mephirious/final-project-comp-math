@@ -109,3 +109,19 @@ def runge_kutta(x0, y0, xn, h):
         x = x + h
 
     return y
+
+def dydx(x, y, equation):
+    return eval(equation, {"x": x, "y": y, "np": np})
+
+def runge_kutta(x0, y0, xn, h, equation):
+    n = round((xn - x0) / h)
+    y = y0
+    x = x0
+
+    for _ in range(n):
+        k1 = h * dydx(x, y, equation)
+        k2 = h * dydx(x + 0.5 * h, y + 0.5 * k1, equation)
+        y = y + k2
+        x = x + h
+
+    return y
